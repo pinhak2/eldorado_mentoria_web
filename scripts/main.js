@@ -9,8 +9,8 @@ function getUser() {
     var gitUser = document.querySelector('input')
     fetch(`https://api.github.com/users/${gitUser.value}`)  //Search for github user 
     .then(response => {
-      return response.json()
-    }) //Converting the response to a JSON object
+      return response.json() //Converting the response to a JSON object
+    }) 
     .then(function(data) {
       if(data.message){
           console.log('User Profile Not Found')
@@ -19,14 +19,14 @@ function getUser() {
           document.getElementById('res').innerHTML = `
           ${data.name}`
       }
-      return fetch(`https://api.github.com/users/USER_GITHUB/${gitUser.value}/repos`)
+      return fetch(`https://api.github.com/users/${gitUser.value}/repos`)
     })
     .then(response => {
-      return response.json()
-    }) //Converting the response to a JSON object
+      return response.json()  //Converting the response to a JSON object
+    })
     .then(data =>{
           console.log(data)
-          document.getElementById('rep').innerHTML = `${data}`
+          document.getElementById('rep').innerHTML = `${data.length}`
     })
     .catch(function(error) {
       console.log(error)
