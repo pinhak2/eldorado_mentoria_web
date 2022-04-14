@@ -28,6 +28,8 @@ function getUser() {
           console.log(data)
           document.getElementById('rep').innerHTML = putRepo(data) // Display repositories list
     })
+    
+    
     .catch(function(error) {
       console.log(error)
     });
