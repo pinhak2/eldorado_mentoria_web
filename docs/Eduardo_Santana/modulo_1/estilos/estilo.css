@@ -3,15 +3,8 @@ h1 {
     text-align: center;
 }
 
-.center {
+.center, .col-md-12 {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;
-}
-
-.col-md-12 {
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
+    margin: auto;
+    width: 20%; 
 }
