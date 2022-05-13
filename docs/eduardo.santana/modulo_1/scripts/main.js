@@ -1,7 +1,4 @@
-const meuCabecalho = document.getElementById('initial-text');
-meuCabecalho.textContent = 'Github Profile Search';
-const meuBotao = document.querySelector('button');
-
+/* eslint-disable no-unused-vars */
 function getUser() {
 	const gitUser = document.querySelector('input' );
 	document.getElementById('list-rep').innerHTML = '';
@@ -31,7 +28,7 @@ function getUser() {
 		});
 }
 
-meuBotao.addEventListener('click', getUser);
+//meuBotao.addEventListener('click', getUser);
 
 function putRepo(data) {
 	var listDiv = document.getElementById('list-rep');
