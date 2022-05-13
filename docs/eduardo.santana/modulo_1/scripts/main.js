@@ -41,6 +41,6 @@ function putRepo(data) {
 		li.innerHTML = data[i].name;
 		ul.appendChild(li);
 	}
-	listDiv.appendChild (ul);
+	listDiv.appendChild(ul);
 }
 //var myImage = document.querySelector('img');
