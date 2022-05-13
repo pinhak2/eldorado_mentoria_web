@@ -4,9 +4,7 @@ function getUser() {
 	document.getElementById('list-rep').innerHTML = '';
 	//Search for github user
 	fetch (`https://api.github.com/users/${gitUser.value}`)
-		.then(response => {
-			return response.json(); //Converting the response to a JSON object
-		}) 
+		.then(response => response.json()) //Converting the response to a JSON object
 		.then(function(data) {
 			if(data.message){
 				console.log('User Profile Not Found');
