@@ -16,9 +16,7 @@ function getUser() {
 			}
 			return fetch(`https://api.github.com/users/${gitUser.value}/repos`); // Search for Repositories
 		})
-		.then(response => {
-			return response.json();  //Converting the response to a JSON object
-		})
+		.then(response => response.json()) //Converting the response to a JSON object
 		.then(data =>{
 			console.log(data);
 			document.getElementById('rep').innerHTML = putRepo(data); // Display repositories list
