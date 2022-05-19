@@ -41,13 +41,15 @@ body {
   width: 800px;
   margin: 0 auto;
   background-color: #131313;
-  padding: 0 20px 20px 20px;
+  padding: 25px;
   border: 3px solid black;
 }
 
 img {
   display: block;
   margin: 0 auto;
+  padding: 25px;
+  max-width: calc(100% - 50px);
 }
 
 button {
@@ -78,7 +80,11 @@ button:hover {
   width: 210px;
 }
 
-#search {
+form label {
+  font-size: 30px;
+}
+
+form input {
   border: 0;
   border-radius: 4px;
   font-size: 18px;
@@ -87,13 +93,43 @@ button:hover {
   width: 300px;
 }
 
-#userimg {
-  display: block;
-  float: none;
-  margin: 0 0 0 0;
+.error {
+  color: red;
+  font-size: 20px;
 }
 
-.projetonome {
+.error,
+.profile,
+.repositories,
+footer {
+  display: none;
+}
+
+.repositories .project {
   font-size: 30px;
   color: #fff;
+  border: 1px solid gray;
+  padding: 25px;
+  margin: 25px;
+  display: inline-block;
+}
+
+.profile .imageContainer,
+.profile .profileContainer {
+  padding: 25px;
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.profile .imageContainer img {
+  max-width: 115px;
+}
+
+.profile .profileContainer p {
+  text-align: left;
+  margin: 0 0 25px 0;
+}
+
+.profile .profileContainer p label {
+  font-weight: bold;
 }
