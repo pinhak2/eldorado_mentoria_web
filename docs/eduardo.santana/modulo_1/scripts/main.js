@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 const gitUser = document.querySelector('input');
 const url = 'https://api.github.com/users/';
 
@@ -13,8 +11,17 @@ gitUser.addEventListener('keypress', function(event) {
 function showError() {
 	document.getElementById('getUserError').innerText = 'Não foi possivel encontrar usuário! Tente Novamente !';
 }
+
 function clearBox(elementId) {
 	document.getElementById(elementId).innerText = '';
+}
+
+function showInfo(data) {
+	document.getElementById('personalInfo').innerText = `Full Name: ${data.name}`;
+	let img = document.createElement('img');
+	img.src = `${data.userImage}`;
+	let src = document.getElementById('avatarImage');
+	src.appendChild(img);
 }
 
 async function getUser() {
@@ -27,6 +34,7 @@ async function getUser() {
 		const json = await response.json();
 		return {
 			name: json.name,
+			userImage: json.avatar_url, 
 		};
 	} catch(err) {
 		showError();
@@ -37,6 +45,9 @@ async function getUserRepo() {
 	try{
 		//Search for repository
 		const response = await fetch(`${url}${gitUser.value}/repos`);
+		if (!response.ok) {
+			throw new Error(`HTTP error! status: ${response.status}`);
+		}
 		const json = await response.json();
 		return {
 			data: json,
@@ -49,14 +60,14 @@ async function getUserRepo() {
 function setup() {
 	clearBox('getUserError');
 	clearBox('repositoryList');
+	clearBox('personalInfo');
+	clearBox('avatarImage');
 	getUser()
-		.then(data => {
-			document.getElementById('personalInfo').innerText = `${data.name}`;
-		})
+		.then(data => showInfo(data))
 		.catch(err => console.error(err));
 	getUserRepo()
 		.then(data => {
-			document.getElementById('gitUserInfo').innerHTML = putRepo(data.data);
+			document.getElementById('gitUserInfo').innerHTML = putRepo(data.data); 
 		})
 		.catch(err => console.error(err));
 }
