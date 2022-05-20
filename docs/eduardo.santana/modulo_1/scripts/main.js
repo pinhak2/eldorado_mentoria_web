@@ -12,8 +12,9 @@ function showError() {
 	document.getElementById('getUserError').innerText = 'Não foi possivel encontrar usuário! Tente Novamente !';
 }
 
-function clearBox(elementId) {
-	document.getElementById(elementId).innerText = '';
+function clearBox(elementIdArray) {
+	for (let object of elementIdArray) 
+		document.getElementById(object).innerText = '';
 }
 
 function showInfo(data) {
@@ -22,6 +23,17 @@ function showInfo(data) {
 	img.src = `${data.userImage}`;
 	let src = document.getElementById('avatarImage');
 	src.appendChild(img);
+}
+
+function putRepo(data) {
+	let listDiv = document.getElementById('repositoryList');
+	let ul=document.createElement('ul');
+	for (let object of data) {
+		let li=document.createElement('li');
+		li.innerHTML = object.name;
+		ul.appendChild(li);
+	}
+	listDiv.appendChild(ul);
 }
 
 async function getUser() {
@@ -58,10 +70,7 @@ async function getUserRepo() {
 }
 
 function setup() {
-	clearBox('getUserError');
-	clearBox('repositoryList');
-	clearBox('personalInfo');
-	clearBox('avatarImage');
+	clearBox(['getUserError', 'repositoryList', 'personalInfo','avatarImage']);
 	getUser()
 		.then(data => showInfo(data))
 		.catch(err => console.error(err));
@@ -70,15 +79,4 @@ function setup() {
 			document.getElementById('gitUserInfo').innerHTML = putRepo(data.data); 
 		})
 		.catch(err => console.error(err));
-}
-
-function putRepo(data) {
-	let listDiv = document.getElementById('repositoryList');
-	let ul=document.createElement('ul');
-	for (let object of data) {
-		let li=document.createElement('li');
-		li.innerHTML = object.name;
-		ul.appendChild(li);
-	}
-	listDiv.appendChild(ul);
 }
