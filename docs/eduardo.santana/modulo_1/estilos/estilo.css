@@ -3,8 +3,9 @@ h1 {
     text-align: center;
 }
 
-.center, .col-md-12 {
+.center, .gitUserInfo, .error {
     display: block;
+    text-align: center;
     margin: auto;
     width: 20%; 
 }

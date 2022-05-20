@@ -1,39 +1,73 @@
 /* eslint-disable no-unused-vars */
-function getUser() {
-	const gitUser = document.querySelector('input' );
-	document.getElementById('list-rep').innerHTML = '';
-	//Search for github user
-	fetch (`https://api.github.com/users/${gitUser.value}`)
-		.then(response => response.json()) //Converting the response to a JSON object
-		.then(function(data) {
-			if(data.message){
-				console.log('User Profile Not Found');
-			}else{
-				console.log(data);
-				document.getElementById('res').innerHTML = `${data.name}`;
-			}
-			return fetch(`https://api.github.com/users/${gitUser.value}/repos`); // Search for Repositories
-		})
-		.then(response => response.json()) //Converting the response to a JSON object
-		.then(data =>{
-			console.log(data);
-			document.getElementById('rep').innerHTML = putRepo(data); // Display repositories list
-		})
-		.catch(function(error) {
-			console.log(error);
-		});
+
+const gitUser = document.querySelector('input');
+const url = 'https://api.github.com/users/';
+
+gitUser.addEventListener('keypress', function(event) {
+	if (event.key === 'Enter') {
+		event.preventDefault();
+		document.getElementById('myBtn').click();
+	}
+});
+
+function showError() {
+	document.getElementById('getUserError').innerText = 'Não foi possivel encontrar usuário! Tente Novamente !';
+}
+function clearBox(elementId) {
+	document.getElementById(elementId).innerText = '';
 }
 
-//meuBotao.addEventListener('click', getUser);
+async function getUser() {
+	try {
+		//Search for github user
+		const response = await fetch(`${url}${gitUser.value}`);
+		if (!response.ok) {
+			throw new Error(`HTTP error! status: ${response.status}`);
+		}
+		const json = await response.json();
+		return {
+			name: json.name,
+		};
+	} catch(err) {
+		showError();
+	}
+}
+
+async function getUserRepo() {
+	try{
+		//Search for repository
+		const response = await fetch(`${url}${gitUser.value}/repos`);
+		const json = await response.json();
+		return {
+			data: json,
+		};
+	} catch (er) {
+		console.log('error');
+	}
+}
+
+function setup() {
+	clearBox('getUserError');
+	clearBox('repositoryList');
+	getUser()
+		.then(data => {
+			document.getElementById('personalInfo').innerText = `${data.name}`;
+		})
+		.catch(err => console.error(err));
+	getUserRepo()
+		.then(data => {
+			document.getElementById('gitUserInfo').innerHTML = putRepo(data.data);
+		})
+		.catch(err => console.error(err));
+}
 
 function putRepo(data) {
-	var listDiv = document.getElementById('list-rep');
-	var ul=document.createElement('ul');
+	let listDiv = document.getElementById('repositoryList');
+	let ul=document.createElement('ul');
 	for (let object of data) {
-		var li=document.createElement('li');
+		let li=document.createElement('li');
 		li.innerHTML = object.name;
 		ul.appendChild(li);
 	}
 	listDiv.appendChild(ul);
 }
-//var myImage = document.querySelector('img');

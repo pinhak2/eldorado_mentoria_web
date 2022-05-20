@@ -6,17 +6,23 @@
     <link href="/docs/eduardo.santana/modulo_1/estilos/estilo.css" rel="stylesheet">
   </head>
   <body>
-    <h1 id="initial-text">Github Profile Search</h1>
-    <img src="imagens/git-search.PNG" alt="Minha imagem de teste" class="center">
-    <input type="text" placeholder="Search.." class="center">
-    <button class="center" onclick="getUser()">Search</button>
+    <div>
+      <h1 id="initial-text">Github Profile Search</h1>
+      <img src="imagens/git-search.PNG" alt="Minha imagem de teste" class="center">
+      <input type="text" placeholder="Search.." class="center">
+      <button id="myBtn" class="center" onclick="setup()">Search</button>
 
-    <!-- GitHub Profile Info-->
-    <div class="row">
-        <div class="col-md-12" id="res">
-        </div>
-        <div id="list-rep">
-        </div>
+      <div class="error">
+        <p id="getUserError"></p>
+      </div>
+
+      <!-- GitHub Profile Info-->
+      <div class="gitUserInfo">
+          <div class="col" id="personalInfo">
+          </div>
+          <div id="repositoryList">
+          </div>
+      </div>
     </div>
     <script src="./scripts/main.js"></script>
   </body>
