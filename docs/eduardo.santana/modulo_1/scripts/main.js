@@ -71,12 +71,6 @@ async function getUserRepo() {
 
 function setup() {
 	clearBox(['getUserError', 'repositoryList', 'personalInfo','avatarImage']);
-	getUser()
-		.then(data => showInfo(data))
-		.catch(err => console.error(err));
-	getUserRepo()
-		.then(data => {
-			document.getElementById('gitUserInfo').innerHTML = putRepo(data.data); 
-		})
-		.catch(err => console.error(err));
+	getUser().then(data => showInfo(data));
+	getUserRepo().then(data => putRepo(data.data));
 }
