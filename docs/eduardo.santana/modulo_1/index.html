@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Github Profile Search</title>
-    <link href="/docs/eduardo.santana/modulo_1/estilos/estilo.css" rel="stylesheet">
+    <link href="./stylesheet.css" rel="stylesheet" />
   </head>
   <body>
     <div>
       <h1 id="initial-text">Github Profile Search</h1>
-      <img src="imagens/git-search.PNG" alt="Minha imagem de teste" class="center">
-      <input type="text" placeholder="Search.." class="center">
-      <button id="myBtn" class="center" onclick="setup()">Search</button>
+      <img
+        src="./search.png"
+        alt="Imagem do logotipo do GitHub"
+        class="center"
+      />
+      <form onsubmit="return search(event)">
+        <div>
+          <label for="searchText"></label>
+          <input
+            type="text"
+            placeholder="Search..."
+            class="center"
+            id="searchText"
+          />
+        </div>
+        <button type="submit" class="center">Search</button>
+      </form>
 
       <div class="error">
-        <p id="getUserError"></p>
+        <p id="error" class="clear"></p>
       </div>
 
       <!-- GitHub Profile Info-->
-      
+
       <div class="gitUserInfo">
-          <div id="avatarImage"></div>
-          <div class="profile" id="personalInfo">
-              
-          </div>
-          <div id="repositoryList">
-          </div>
+        <img id="avatarImage" />
+        <div class="profile clear" id="personalInfo"></div>
+        <div id="repositoryContainer" class="clear"></div>
       </div>
     </div>
-    <script src="./scripts/main.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
