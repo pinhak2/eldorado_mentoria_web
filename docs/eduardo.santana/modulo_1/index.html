@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Github Profile Search</title>
     <link href="./stylesheet.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a367b58350.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <main>
@@ -37,28 +38,30 @@
             </div>
           </div>
           <div class="error">
-            <p id="error" class="clear"></p>
+            <p id="error" class="clear">
+              <i class="fa-brands fa-github"></i>
+            </p>
           </div>
         </div>
         <div class="repositorySearch">
           <div class="gitUserSearch">
             <form onsubmit="return search(event)">
               <div>
+                <h1>Github Profile Search</h1>
                 <label for="searchText"></label>
                 <input
                   type="text"
                   placeholder="Search..."
-                  class="center"
                   id="searchText"
                 />
               </div>
-              <button type="submit" class="center">Search</button>
+              <button type="submit">Search</button>
             </form>
           </div>
           <div id="repositoryContainer" class="clear"></div>
         </div>
-    </section>
-  </main>
+      </section>
+    </main>
   </body>
   <script src="./script.js"></script>
 </html>
