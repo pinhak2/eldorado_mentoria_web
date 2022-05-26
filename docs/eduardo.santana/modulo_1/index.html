@@ -7,63 +7,56 @@
   </head>
   <body>
     <main>
-      <section class="mainPage">
+      <section class="profileSearch">
         <div class="gitUserInformation">
           <div class="userInformation">
             <img id="avatarImage"/>
-            <h3 id="fullName"></h3>
-            <p id="login"></p>
+            <h3 id="fullName" class="clear"></h3>
+            <p id="login" class="clear"></p>
           </div>
           <div class="profileInformations">
             <div class="profileInformation">
-              <h3 id="Company"></h3>
-              <p id="company"></p>
+              <h3 id="Company" class="clear"></h3>
+              <p id="company" class="clear"></p>
             </div>
             <div class="profileInformation">
-              <h3 id="Email"></h3>
-              <p id="email"></p>
+              <h3 id="Email" class="clear"></h3>
+              <p id="email" class="clear"></p>
             </div>
             <div class="profileInformation">
-              <h3 id="Followers"></h3>
-              <p id="followers"></p>
+              <h3 id="Followers" class="clear"></h3>
+              <p id="followers" class="clear"></p>
             </div>
             <div class="profileInformation">
-              <h3 id="Following"></h3>
-              <p id="following"></p>
+              <h3 id="Following" class="clear"></h3>
+              <p id="following" class="clear"></p>
             </div>
             <div class="profileInformation">
-              <h3 id="Location"></h3>
-              <p id="location"></p>
+              <h3 id="Location" class="clear"></h3>
+              <p id="location" class="clear"></p>
             </div>
-            
+          </div>
+          <div class="error">
+            <p id="error" class="clear"></p>
           </div>
         </div>
-        <form onsubmit="return search(event)">
-          <div>
-            <label for="searchText"></label>
-            <input
-              type="text"
-              placeholder="Search..."
-              class="center"
-              id="searchText"
-            />
+        <div class="repositorySearch">
+          <div class="gitUserSearch">
+            <form onsubmit="return search(event)">
+              <div>
+                <label for="searchText"></label>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  class="center"
+                  id="searchText"
+                />
+              </div>
+              <button type="submit" class="center">Search</button>
+            </form>
           </div>
-          <button type="submit" class="center">Search</button>
-        </form>
-
-        <div class="error">
-          <p id="error" class="clear"></p>
-        </div>
-
-        <!-- GitHub Profile Info-->
-<!--
-        <div class="gitUserInfo">
-          <img id="avatarImage" />
-          <div class="profile clear" id="personalInfo"></div>
           <div id="repositoryContainer" class="clear"></div>
         </div>
-
-      -->
     </section>
   </main>
   </body>

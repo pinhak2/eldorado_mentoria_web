@@ -4,10 +4,9 @@ h1 {
 }
 
 .center,
-.gitUserInfo,
+.gitUserInformation,
 .error {
   display: block;
-  text-align: center;
   margin: auto;
   width: 20%;
 }
@@ -25,8 +24,7 @@ main {
   justify-content: center;
 }
 
-.mainPage {
-    background: white;
+.profileSearch {
     min-height: 80vh;
     width: 60%;
     background: linear-gradient(

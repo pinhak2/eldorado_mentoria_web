@@ -64,13 +64,16 @@ async function getGithubUserRepositories(username) {
 
 function clear() {
   const items = [...document.getElementsByClassName('clear')]
-  items.forEach((element) => (element.innerText = ''))
+  items.forEach((element) =>{
+    console.log(element);
+    (element.innerText = '');
+  })
   document.getElementById('avatarImage').src = ''
 }
 
 // variável é utilizada no HTML
 // eslint-disable-next-line no-unused-vars
-function search() {
+function search(event) {
   event.preventDefault()
   clear()
   const username = document.getElementById('searchText').value
