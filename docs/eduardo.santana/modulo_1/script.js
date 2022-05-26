@@ -4,8 +4,20 @@ function showError(message) {
   document.getElementById('error').innerText = message
 }
 
-function showUserInformation({ name, userImage }) {
-  document.getElementById('personalInfo').innerText = `Full Name: ${name}`
+function showUserInformation({ name, location, following, followers, email, login, company, userImage }) {
+  document.getElementById('fullName').innerText = `${name}`
+  document.getElementById('login').innerText = `${login}`
+  document.getElementById('company').innerText = `${company}`
+  document.getElementById('Company').innerText = `Company`
+  document.getElementById('email').innerText = `${email}`
+  document.getElementById('Email').innerText = `Email`
+  document.getElementById('followers').innerText = `${followers}`
+  document.getElementById('Followers').innerText = `Followers`
+  document.getElementById('following').innerText = `${following}`
+  document.getElementById('Following').innerText = `Following`
+  document.getElementById('location').innerText = `${location}`
+  document.getElementById('Location').innerText = `Location`
+  following
   document.getElementById('avatarImage').src = userImage
 }
 
@@ -28,6 +40,12 @@ async function getGithubUser(username) {
   const json = await response.json()
   return {
     name: json.name,
+    login: json.login,
+    company: json.company,
+    email: json.email,
+    followers: json.followers,
+    location: json.location,
+    following: json.following,
     userImage: json.avatar_url,
   }
 }
