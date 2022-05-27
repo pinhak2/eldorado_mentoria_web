@@ -17,19 +17,19 @@ function showUserInformation({ name, location, following, followers, email, logi
   document.getElementById('Following').innerText = `Following`
   document.getElementById('location').innerText = `${location}`
   document.getElementById('Location').innerText = `Location`
-  following
   document.getElementById('avatarImage').src = userImage
 }
 
 function buildUserRepositories(data) {
   const repositoryContainer = document.getElementById('repositoryContainer')
-  const repositoryList = document.createElement('ul')
   for (const object of data) {
-    const listItem = document.createElement('li')
-    listItem.innerHTML = object.name
-    repositoryList.appendChild(listItem)
+    const divItem = document.createElement('div')
+    divItem.classList.add('repository')
+    const textItem = document.createElement('h4')
+    textItem.innerText = object.name
+    divItem.appendChild(textItem)
+    repositoryContainer.appendChild(divItem)
   }
-  repositoryContainer.appendChild(repositoryList)
 }
 
 async function getGithubUser(username) {
@@ -61,31 +61,28 @@ async function getGithubUserRepositories(username) {
     data: json,
   }
 }
-
 function clear() {
   const items = [...document.getElementsByClassName('clear')]
-  items.forEach((element) =>{
-    console.log(element);
-    (element.innerText = '');
-  })
-  document.getElementById('avatarImage').src = ''
+  items.forEach((element) => (element.innerText = ''))
+  document.getElementById('avatarImage').removeAttribute('src')
 }
-
 // variável é utilizada no HTML
 // eslint-disable-next-line no-unused-vars
 function search(event) {
+  const error = document.getElementById('error')
   event.preventDefault()
   clear()
   const username = document.getElementById('searchText').value
   getGithubUser(username)
     .then((data) => {
+
       showUserInformation(data)
       return getGithubUserRepositories(username)
     })
     .then((data) => buildUserRepositories(data.data))
     .catch(() => {
       showError(
-        'Não foi possivel aquisitar as informações do usuário! Tente Novamente!'
+        'Não foi possivel capturar as informações do usuário! Tente Novamente!'
       )
     })
 }
