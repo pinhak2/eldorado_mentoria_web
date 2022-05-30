@@ -4,6 +4,8 @@ function showError(message) {
   document.getElementById('error').innerText = message
 }
 
+//teste
+
 function showUserInformation(data) {
   for (const key in data){
     const element = document.getElementById(key)
