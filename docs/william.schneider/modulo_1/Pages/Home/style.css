@@ -4,13 +4,17 @@ p {
   margin: 3% auto 0%;
   padding-inline: 50%;
   text-align: center;
-  font-size: 800%; /* 128px */
+  /* font-size: 800%;*/ /*128px */
+  font-size: 12.5vw;
 }
 
+html,
 body {
   font-family: "Noto Sans";
   margin-right: auto;
   margin-left: auto;
+  height: 100%;
+  width: 100%;
 }
 span.blue {
   color: #0b78b9;
@@ -38,10 +42,13 @@ button {
   border: none;
   border-radius: 15px;
   text-align: center;
-  font-size: 300%;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+  /* font-size: 300%; */
+  font-size: 6vw;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.4);
 }
-
+button:hover {
+  opacity: 85%;
+}
 input {
   display: flex;
   justify-content: center;
